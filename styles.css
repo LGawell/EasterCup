@@ -1,0 +1,95 @@
+body {
+	background-color: #cbf9ac;
+	font-family: verdana;
+	font-size: 100%;
+	color: #234f49;
+}
+
+h1 {
+	text-align: center;
+	font-size: 4em;
+	margin-bottom: 0;
+}
+h6 {
+	margin-top: 0;
+	margin-bottom: 40px;
+	text-align: center;
+	font-size: 1em;
+}
+
+#formContainer {
+	display: block;
+	overflow: auto;
+	width: 400px;
+	margin: 0 auto;
+	background-color: #3ea02c;
+	background-color: rgba(25, 25, 25, 0.7);
+	padding: 10px;
+	border-radius: 5px;
+}
+
+#formContainer p {
+	margin: 0px;
+	color: #fff;
+	font-size: 0.9em;
+}
+
+#contestantsForm input {
+	width: 395px;
+}
+
+#formContainer input {
+	margin: 8px 0px;
+}
+
+#bracketField {
+	padding: 40px;
+}
+
+.qualField {
+	padding: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.qualField p {
+	display: inline-block;
+	overflow: auto;
+	background-color: white;
+	padding: 16px;
+	margin: 0px;
+	border: 3px solid #234f49;
+	border-radius: 8px;
+	width: 134px;
+	text-align: center;
+}
+.qualField input {
+	float: right;
+}
+
+.vsPair {
+	display: inline-block;
+	overflow: auto;
+	background-color: #234f49;
+	border-radius: 8px;
+	margin: 0px 8px 0px 8px;
+}
+
+.winner {
+	margin-bottom: 40px;
+	color: white;
+	font-size: 3em;
+	text-shadow: 0 0 30px #aeff00, 0 0 5px #234f49, 0 0 2px #000;
+}
+
+.loser {
+	margin-bottom: 30px;
+	color: white;
+	font-size: 2em;
+	text-shadow: 0 0 20px #f20438, 0 0 3px #234f49, 0 0 1px #000;
+}
+
+#submitWinners {
+	display: block;
+	margin: 0 auto;
+}

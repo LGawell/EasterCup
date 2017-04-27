@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script src="script.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+<body>
+
+	<!-- Some Information -->
+	<h1>EASTER CUP</h1>
+	<h6>By Love Gawell</h6>
+
+	<!-- Contestants Form, hidden when submitted without error -->
+	<div id="formContainer">
+		<p>Enter at least <strong>2</strong> contestants' names to begin.</p>
+		<form id="contestantsForm">
+			<input type="text" /><br/>
+			<input type="text" /><br/>
+			<input type="text" /><br/>
+			<input type="text" /><br/>
+			<input type="text" /><br/>
+			<input type="text" /><br/>
+			<input type="text" /><br/>
+			<input type="text" /><br/>
+		</form>
+		<input id="addFields" type="button" value="Add Fields" />
+		<input id="submitFields" type="button" value="Submit" />
+	</div>
+
+	<!-- Container for the brackets -->
+	<div id="bracketField">
+	</div>
+	
+	<!-- Submit winners button, hidden by default -->
+	<input id="submitWinners" type="button" value="Submit Winners" />
+
+
+</body>
+</html>
