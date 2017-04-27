@@ -47,12 +47,25 @@ h6 {
 }
 
 .qualField {
-	padding: 20px;
+	background-color: rgba(25, 25, 25, 0.2);
+	padding: 10px;
+	margin: 0 auto;
 	margin-bottom: 10px;
+	border-radius: 5px;
+	width: 80%;
 	text-align: center;
+	//text-align: justify;
 }
 
-.qualField p {
+.vsPair {
+	display: inline-block;
+	overflow: auto;
+	background-color: #234f49;
+	border-radius: 8px;
+	margin: 0px 8px 10px 8px;
+}
+
+.vsPair p {
 	display: inline-block;
 	overflow: auto;
 	background-color: white;
@@ -63,16 +76,15 @@ h6 {
 	width: 134px;
 	text-align: center;
 }
-.qualField input {
+.vsPair input {
 	float: right;
 }
 
-.vsPair {
-	display: inline-block;
-	overflow: auto;
-	background-color: #234f49;
-	border-radius: 8px;
-	margin: 0px 8px 0px 8px;
+.vsPair span {
+	display: block;
+	padding-bottom: 5px;
+	color: white;
+	text-align: center;
 }
 
 .winner {
@@ -89,7 +101,20 @@ h6 {
 	text-shadow: 0 0 20px #f20438, 0 0 3px #234f49, 0 0 1px #000;
 }
 
+.round {
+	margin-left: 10%;
+	margin-bottom: 2px;
+	font-weight: bold;
+}
+
 #submitWinners {
 	display: block;
 	margin: 0 auto;
+}
+
+.invisibleBox {
+	display: inline-block;
+	width: 190px;
+	height: 150px;
+	//background-color: blue;
 }

@@ -34,7 +34,7 @@ function submitFields () {
 	
 	// Set bracket id and append a div to display the bracket data in
 	qual_id += 1;
-	$("#bracketField").append('<div class="qualField" id="qual_' + qual_id +'"></div>');
+	$("#bracketField").append('<p class="round">Round ' + qual_id + '</p><div class="qualField" id="qual_' + qual_id +'"></div>');
 	
 	// Build up the contestant array with the input fields that has a value assigned
 	for (var i = 0; i < tempContestants.length; i++) {
@@ -64,11 +64,11 @@ function submitFields () {
 		// And then apply the proper formatting for it
 		if (i % 2 === 0) {
 			
-			newQual += '<div class="vsPair"><p>' + contestants[i] + '<input type="checkbox" /></p>';
+			newQual += ' <div class="vsPair"><p>' + contestants[i] + '<input type="checkbox" /></p>';
 		}
 		else {
 			
-			newQual += '<p>' + contestants[i] + '<input type="checkbox" /></p></div>';
+			newQual += '<span>vs</span><p>' + contestants[i] + '<input type="checkbox" /></p></div>';
 		}
 	}
 	// Append the formatted data to the bracket, and display the appropriate buttons
@@ -95,6 +95,9 @@ function submitWinners () {
 		if (tempWinners[i].checked === true) {
 			
 			winners.push(contestants[i]);
+			
+			// Highlight the winner's position in the old bracket with a nice green
+			$(tempWinners[i]).parent().css("background-color", "#b0ef1c");
 		}
 	}
 	
@@ -103,15 +106,17 @@ function submitWinners () {
 	
 	var newQual = "";
 	
-	// Set bracket id and append a div to display the bracket data in
+	// Set bracket id
 	qual_id += 1;
-	$("#bracketField").append('<div class="qualField" id="qual_' + qual_id +'"></div>');
 	
 	// If there's only one victor, apply some special formatting to congratulate them!
 	if (winners.length === 1) {
 		
+		// Append a div to display the bracket data in
+		$("#bracketField").append('<p class="round">Winner</p><div class="qualField" id="qual_' + qual_id +'"></div>');
+		
 		newQual += '<h1 class="winner">CONGRATULATIONS</h1>';
-		newQual += '<div class="vsPair"><p>' + winners[0] + '</p></div>'
+		//newQual += '<div class="vsPair"><p>' + winners[0] + '</p></div>'
 		newQual += '<h1 class="winner">' + winners[0].toUpperCase() + '!</h1>';
 		
 		var losers = "";
@@ -135,17 +140,27 @@ function submitWinners () {
 	// If not, format winner data in a plain manner
 	else {
 		
+		// Append a div to display the bracket data in
+		$("#bracketField").append('<p class="round">Round ' + qual_id + '</p><div class="qualField" id="qual_' + qual_id +'"></div>');
+		
 		for (var i = 0; i < winners.length; i++) {
 
 			// Determine if it's the first contestant of a pair, or not
 			// And then apply the proper formatting for it
 			if (i % 2 === 0) {
 				
-				newQual += '<div class="vsPair"><p>' + winners[i] + '<input type="checkbox" /></p>'
+				newQual += ' <div class="vsPair"><p>' + winners[i] + '<input type="checkbox" /></p>'
 			}
 			else {
 				
-				newQual += '<p>' + winners[i] + '<input type="checkbox" /></p></div>'
+				newQual += '<span>vs</span><p>' + winners[i] + '<input type="checkbox" /></p></div>'
+				
+				// We add an invisible box between pairings
+				// This is just for spacing reasons
+				if (winners.length > 2 && i != (winners.length - 1)) {
+					
+					newQual += '<div class="invisibleBox"></div>';
+				}
 			}
 		}
 		// Append the formatted data to the bracket
@@ -157,7 +172,8 @@ function submitWinners () {
 function shuffle (array) {
 
 	//Make an array to hold the values that are needed
-	// The argument array's length, and two empty keys to temporarily store a value during swapping, and a randomly selected key to swap with
+	// The argument array's length, and two empty keys
+	// To temporarily store the current value during swapping, and a randomly selected key to swap with
 	var currentIndex = array.length, temporaryValue, randomIndex;
 
 	// For each of the argument array's entries...
@@ -167,13 +183,12 @@ function shuffle (array) {
 		randomIndex = Math.floor(Math.random() * currentIndex);
 		// Lower the currentIndex so the while loop will work properly
 		currentIndex -= 1;
-		// Temporarily store the current value of the argument array
+		// Temporarily store the current value
 		temporaryValue = array[currentIndex];
 		// And assign the current key's value, to the randomly picked key's value
 		array[currentIndex] = array[randomIndex];
 		// And that key's value, to the temporarily stored value
 		array[randomIndex] = temporaryValue;
-		// Effectively swapping the values between the two keys
 	}
 	//After shuffling through the entire argument array, we return it
 	return array;
