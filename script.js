@@ -51,6 +51,7 @@ function submitFields () {
 		alert("Please enter at least 2 contestants");
 		contestants = [];
 		qual_id = 0;
+		$("#bracketField").html("");
 		return null;
 	}
 	
@@ -64,11 +65,11 @@ function submitFields () {
 		// And then apply the proper formatting for it
 		if (i % 2 === 0) {
 			
-			newQual += ' <div class="vsPair"><p>' + contestants[i] + '<input type="checkbox" /></p>';
+			newQual += ' <div class="vsPair"><p>' + contestants[i] + '<input type="radio" name="vsBtn_' + i + '" checked /></p>';
 		}
 		else {
 			
-			newQual += '<span>vs</span><p>' + contestants[i] + '<input type="checkbox" /></p></div>';
+			newQual += '<span>vs</span><p>' + contestants[i] + '<input type="radio" name="vsBtn_' + (i - 1) + '" /></p></div>';
 		}
 	}
 	// Append the formatted data to the bracket, and display the appropriate buttons
@@ -87,7 +88,7 @@ function submitWinners () {
 	}
 	
 	// Gather up checkbox data
-	var tempWinners = $("input[type|='checkbox']");
+	var tempWinners = $("input[type|='radio']");
 	
 	// Build up the winners array with those contestants who correspond to the checked boxes
 	for (var i = 0; i < tempWinners.length; i++) {
@@ -102,7 +103,7 @@ function submitWinners () {
 	}
 	
 	// Get rid of the old boxes
-	$("input[type|='checkbox']").remove();
+	$("input[type|='radio']").remove();
 	
 	var newQual = "";
 	
@@ -149,11 +150,11 @@ function submitWinners () {
 			// And then apply the proper formatting for it
 			if (i % 2 === 0) {
 				
-				newQual += ' <div class="vsPair"><p>' + winners[i] + '<input type="checkbox" /></p>'
+				newQual += ' <div class="vsPair"><p>' + winners[i] + '<input type="radio" name="vsBtn_' + i + '" checked /></p>'
 			}
 			else {
 				
-				newQual += '<span>vs</span><p>' + winners[i] + '<input type="checkbox" /></p></div>'
+				newQual += '<span>vs</span><p>' + winners[i] + '<input type="radio" name="vsBtn_' + (i - 1) + '" /></p></div>'
 				
 				// We add an invisible box between pairings
 				// This is just for spacing reasons
